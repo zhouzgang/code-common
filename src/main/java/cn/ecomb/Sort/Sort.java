@@ -1,5 +1,6 @@
 package cn.ecomb.Sort;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -12,7 +13,7 @@ public class Sort {
      */
     public void bubbleSort(){
         int array[] = getRandomArray();
-        System.out.println(array.toString());
+        System.out.println(Arrays.toString(array));
         for (int i=0,length=array.length ; i<length ; i++) {
             for (int j=0 ; j<length-i ; j--) {
                 if (array[i] > array[i+1]) {
@@ -22,7 +23,7 @@ public class Sort {
                 }
             }
         }
-        System.out.println(array.toString());
+        System.out.println(Arrays.toString(array));
     }
 
     private int[] getRandomArray() {
