@@ -1,4 +1,4 @@
-package com.ecomb;
+package cn.ecomb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
