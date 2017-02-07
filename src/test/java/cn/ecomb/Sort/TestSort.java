@@ -1,4 +1,4 @@
-package com.ecomb.Sort;
+package cn.ecomb.Sort;
 
 import org.junit.Test;
 
