@@ -1,4 +1,4 @@
-package com.ecomb.Conllection;
+package cn.ecomb.Conllection;
 
 /**
  * Created by zhouzg on 2017/2/6.

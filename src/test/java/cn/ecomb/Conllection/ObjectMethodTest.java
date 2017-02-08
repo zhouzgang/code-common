@@ -1,4 +1,4 @@
-package com.ecomb.Conllection;
+package cn.ecomb.Conllection;
 
 import com.sun.org.apache.xpath.internal.SourceTree;
 import org.junit.Test;

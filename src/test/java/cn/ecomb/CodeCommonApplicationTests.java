@@ -1,4 +1,4 @@
-package com.ecomb;
+package cn.ecomb;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
