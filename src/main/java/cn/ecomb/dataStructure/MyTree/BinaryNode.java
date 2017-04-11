@@ -15,6 +15,19 @@ public class BinaryNode {
     /** 左节点 */
     private BinaryNode rightNode;
 
+    public BinaryNode() {
+    }
+
+    public BinaryNode(String content) {
+        this.content = content;
+    }
+
+    public BinaryNode(String content, BinaryNode leftNode, BinaryNode rightNode) {
+        this.content = content;
+        this.leftNode = leftNode;
+        this.rightNode = rightNode;
+    }
+
     public String getContent() {
         return content;
     }
