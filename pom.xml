@@ -6,7 +6,10 @@
 	<groupId>com.ecomb</groupId>
 	<artifactId>code-common</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<modules>
+		<module>data-structures-algorithms</module>
+	</modules>
+	<packaging>pom</packaging>
 
 	<name>code-common</name>
 	<description>Demo project for Spring Boot</description>

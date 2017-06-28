@@ -10,11 +10,15 @@ import java.lang.reflect.Proxy;
  * 使用java提供的接口生成代理对象，具体还需要了解生成代理的实际原理
  */
 public class ExeciseDynamicProxy {
-    public void execute() {
+    public static void execute() {
         Star2 realStar2 = new RealStar2();
         Starhandler starhandler = new Starhandler(realStar2);
         Star2 proxy = (Star2) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader() , new Class[]{Star2.class} , starhandler);
         proxy.sing();
+    }
+
+    public static void main(String[] args) {
+        execute();
     }
 }
 

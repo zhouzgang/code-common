@@ -1,4 +1,4 @@
-package cn.ecomb.dataStructure.MyTree;
+package cn.ecomb.dataStructure.tree.node;
 
 /**
  * 二叉树结构的节点
@@ -7,7 +7,7 @@ package cn.ecomb.dataStructure.MyTree;
  */
 public class BinaryNode {
     /** 节点上的数据 */
-    private String content;
+    private Object content;
 
     /** 左节点 */
     private BinaryNode leftNode;
@@ -18,21 +18,21 @@ public class BinaryNode {
     public BinaryNode() {
     }
 
-    public BinaryNode(String content) {
+    public BinaryNode(Object content) {
         this.content = content;
     }
 
-    public BinaryNode(String content, BinaryNode leftNode, BinaryNode rightNode) {
+    public BinaryNode(Object content, BinaryNode leftNode, BinaryNode rightNode) {
         this.content = content;
         this.leftNode = leftNode;
         this.rightNode = rightNode;
     }
 
-    public String getContent() {
+    public Object getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(Object content) {
         this.content = content;
     }
 

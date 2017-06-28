@@ -1,6 +1,6 @@
-package cn.ecomb.dataStructure.MyTree;
+package cn.ecomb.dataStructure.tree;
 
-import cn.ecomb.dataStructure.Tree;
+import cn.ecomb.dataStructure.tree.node.BinaryNode;
 
 import java.util.Stack;
 
@@ -73,7 +73,7 @@ public class TreeStructure {
     public static void inOrder(BinaryNode root) {
         if (root != null) {
             inOrder(root.getLeftNode());
-            System.out.print(root.getContent());
+            System.out.println(root.getContent());
             inOrder(root.getRightNode());
         }
     }
