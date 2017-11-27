@@ -30,6 +30,7 @@ interface Star {
 //实现类
 class RealStar implements Star{
 
+    @Override
     public void confer() {
         System.out.println("明星面谈");
     }

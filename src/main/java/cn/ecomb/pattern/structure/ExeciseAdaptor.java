@@ -22,14 +22,18 @@ public class ExeciseAdaptor {
     }
 }
 
-//需要被适配的类
+/**
+ * 需要被适配的类
+ */
 class Adaptee {
     public void request() {
         System.out.println("满足了客户端需求");
     }
 }
 
-//目标类
+/**
+ * 目标类
+ */
 interface Target {
     void handleReq();
 }
@@ -42,6 +46,7 @@ class Adapter implements Target {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void handleReq() {
         adaptee.request();
     }

@@ -67,11 +67,13 @@ public class Sort {
     private int partition(int array[], int low, int high){
         int privotKey = array[low];
         while (low < high) {
-            while (low < high && array[high] >= privotKey)
+            while (low < high && array[high] >= privotKey) {
                 --high;
+            }
             swap(array, low, high);
-            while (low < high && array[low] <= privotKey)
+            while (low < high && array[low] <= privotKey) {
                 ++low;
+            }
             swap(array, low, high);
         }
         return low;

@@ -13,7 +13,9 @@ public class ExeciseDynamicProxy {
     public static void execute() {
         Star2 realStar2 = new RealStar2();
         Starhandler starhandler = new Starhandler(realStar2);
-        Star2 proxy = (Star2) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader() , new Class[]{Star2.class} , starhandler);
+        Star2 proxy = (Star2) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(),
+                new Class[]{Star2.class},
+                starhandler);
         proxy.sing();
     }
 
@@ -22,7 +24,9 @@ public class ExeciseDynamicProxy {
     }
 }
 
-//实际对象接口
+/**
+ * 实际对象接口
+ */
 interface Star2 {
     void confer();
     void signContract();
@@ -31,25 +35,32 @@ interface Star2 {
     void sing();
 }
 
-//实现类
+/**
+ * 实现类
+ */
 class RealStar2 implements Star2{
 
+    @Override
     public void confer() {
         System.out.println("明星面谈");
     }
 
+    @Override
     public void signContract() {
         System.out.println("明星签约");
     }
 
+    @Override
     public void sellTicket() {
         System.out.println("明星售票");
     }
 
+    @Override
     public void collectMoney() {
         System.out.println("明星收钱");
     }
 
+    @Override
     public void sing() {
         System.out.println("明星唱歌");
     }
@@ -61,11 +72,13 @@ class Starhandler implements InvocationHandler {
         super();
         this.realStar = realStar;
     }
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Object obj = null;
         System.out.println("代理签约");
-        if(method.getName().equals("sing"))
-            obj =  method.invoke(realStar, args);
+        if (method.getName().equals("sing")) {
+            obj = method.invoke(realStar, args);
+        }
         System.out.println("代理收钱");
         return obj;
     }

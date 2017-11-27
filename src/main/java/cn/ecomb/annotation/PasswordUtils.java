@@ -15,4 +15,8 @@ public class PasswordUtils {
         return new StringBuilder(password).reverse().toString();
     }
 
+    public static void main(String[] args) {
+        PasswordUtils passwordUtils = new PasswordUtils();
+        System.out.println(passwordUtils.encryptPassword("48"));
+    }
 }
