@@ -75,11 +75,11 @@ class Starhandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Object obj = null;
-        System.out.println("代理签约");
+        System.out.println("proxy代理签约");
         if (method.getName().equals("sing")) {
             obj = method.invoke(realStar, args);
         }
-        System.out.println("代理收钱");
+        System.out.println("proxy代理收钱");
         return obj;
     }
 }
