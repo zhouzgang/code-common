@@ -2,6 +2,7 @@ package cn.ecomb.io.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -62,14 +63,30 @@ public class ServerHandle implements Runnable{
         }
     }
 
+    /**
+     * 处理请求
+     * @param key
+     * @throws IOException
+     */
     private void handleInput(SelectionKey key) throws IOException{
         if (key.isValid()) {
+            //处理新接入的请求消息
             if (key.isAcceptable()) {
                 ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
                 SocketChannel sc = ssc.accept();
                 sc.configureBlocking(false);
+                //注册为读
                 sc.register(selector, SelectionKey.OP_READ);
 
+            }
+
+            if (key.isReadable()) {
+                SocketChannel sc = (SocketChannel) key.channel();
+                ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+                int readBytes = sc.read(byteBuffer);
+                if (readBytes > 0) {
+
+                }
             }
         }
     }
