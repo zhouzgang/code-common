@@ -2,6 +2,7 @@ package cn.ecomb.concurrency.producerconsumer;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author zhouzhigang
@@ -10,7 +11,7 @@ import java.util.List;
 public class TraditionalBlockingQueue<T> implements IBlockingQueue<T> {
 
     private int queueSize;
-    private final List<T> queue = new LinkedList<>();
+    private final LinkedList<T> queue = new LinkedList<>();
     private Object lock = new Object();
     private static final int DEFAULT_QUEUE_SIZE = 10;
 
@@ -27,11 +28,33 @@ public class TraditionalBlockingQueue<T> implements IBlockingQueue<T> {
 
     @Override
     public void put(T t) throws InterruptedException {
-
+        synchronized (lock) {
+            while (queue.size() >= queueSize) {
+                lock.wait();
+            }
+            System.out.println("--put--");
+            queue.add(t);
+            lock.notifyAll();
+        }
     }
 
     @Override
     public T take() throws InterruptedException {
-        return null;
+        synchronized (lock) {
+            while (queue.size() <= 0) {
+                lock.wait();
+            }
+            System.out.println("--take--");
+            T t = queue.removeFirst();
+            lock.notifyAll();
+            return t;
+        }
     }
 }
+
+
+
+
+
+
+
