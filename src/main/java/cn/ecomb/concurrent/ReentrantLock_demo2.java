@@ -1,7 +1,5 @@
 package cn.ecomb.concurrent;
 
-import sun.jvm.hotspot.runtime.DeadlockDetector;
-
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
