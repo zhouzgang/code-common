@@ -35,12 +35,17 @@ public class ForkJoinDemoTask extends RecursiveTask<Long> {
         if (end - start < 1000) {
 //            System.out.println("执行参数：" + start + "," + end);
 //            logger.info("执行参数：{},{}", start, end);
+//            try {
+//                Thread.sleep(5000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
             for (int i = start; i < end; i++) {
                 sum += data[i];
             }
 //            对 println() 和 logger 的耗时测试及对比
 //            System.out.println(Thread.currentThread().getId() + "-> sum: " + sum);
-            logger.info("{}-> sum: {}", Thread.currentThread().getId(), sum);
+//            logger.info("{}-> sum: {}", Thread.currentThread().getId(), sum);
         } else {
             int middle = (end + start) / 2;
             ForkJoinDemoTask taskLeft = new ForkJoinDemoTask(data, start, middle);
