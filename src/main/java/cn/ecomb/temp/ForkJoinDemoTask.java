@@ -28,13 +28,14 @@ public class ForkJoinDemoTask extends RecursiveTask<Long> {
     protected Long compute() {
         long sum = 0;
         if (end - start < 1000) {
-            for (int i = start; i < end; i++) {
+            for (int i = start; i <= end; i++) {
                 sum += data[i];
             }
+            System.out.println(Thread.currentThread().getId()+ ": " +sum);
         } else {
-            int middle = (end - start) / 2;
+            int middle = (end + start) / 2;
             ForkJoinDemoTask taskLeft = new ForkJoinDemoTask(data, start, middle);
-            ForkJoinDemoTask taskRight = new ForkJoinDemoTask(data, middle, end);
+            ForkJoinDemoTask taskRight = new ForkJoinDemoTask(data, middle+1, end);
             taskLeft.fork();
             taskRight.fork();
             sum = taskLeft.join() + taskRight.join();
@@ -47,6 +48,6 @@ public class ForkJoinDemoTask extends RecursiveTask<Long> {
         Arrays.setAll(data, i -> i);
         long sum = new ForkJoinPool().invoke(new ForkJoinDemoTask(data, 0, data.length - 1));
 
-        System.out.println(sum);
+        System.out.println("sum: " + sum);
     }
 }
