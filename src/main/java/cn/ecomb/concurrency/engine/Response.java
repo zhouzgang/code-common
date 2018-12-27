@@ -9,6 +9,11 @@ public class Response {
     private String Uid;
     private String body;
 
+    /**
+     * 记录链路状态信息
+     */
+    private String message;
+
     public Response() {
     }
 
@@ -31,6 +36,15 @@ public class Response {
 
     public Response setBody(String body) {
         this.body = body;
+        return this;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public Response setMessage(String message) {
+        this.message = message;
         return this;
     }
 }

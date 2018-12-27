@@ -55,7 +55,9 @@ public class Sum2 implements Runnable{
         executor.shutdown();
 
         try {
-            while (!executor.awaitTermination(10, TimeUnit.MILLISECONDS)){}
+            while (!executor.awaitTermination(10, TimeUnit.MILLISECONDS)){
+                System.out.println("wait");
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

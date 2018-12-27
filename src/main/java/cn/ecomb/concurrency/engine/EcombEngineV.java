@@ -33,9 +33,11 @@ public class EcombEngineV{
         LogicHandler signal = new SignalFilterLogicHandler();
         LogicHandler recognize = new RecognizeLogicHandler();
         LogicHandler appConfig = new AppConfigLogicHandler();
+        LogicHandler recommendation = new RecommendationLogicHandler();
         head.setNextHandler(signal);
         signal.setNextHandler(recognize);
         recognize.setNextHandler(appConfig);
+        appConfig.setNextHandler(recommendation);
         return head;
     }
 
@@ -51,12 +53,11 @@ public class EcombEngineV{
             Thread thread = new Thread(new Cylinder(resquest, head));
             executor.execute(thread);
         }
-
         executor.shutdown();
 
         try {
             while (!executor.awaitTermination(10, TimeUnit.MILLISECONDS)){
-                System.out.printf("wait!");
+                System.out.println("wait!");
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
