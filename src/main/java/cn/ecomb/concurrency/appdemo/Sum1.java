@@ -34,8 +34,9 @@ public class Sum1 implements Runnable{
             }
             current = System.currentTimeMillis() - current;
             System.out.println("from : " + from + "   to : " + to + "  Thread." + threadNum + ": " + sum.v + ", " + current);
-
+            Thread.sleep(3000);
         } catch (Exception e) {
+            e.printStackTrace();
         }finally {
             // 倒数器减1
             countDownLatch.countDown();
@@ -44,7 +45,7 @@ public class Sum1 implements Runnable{
 
     public static void main(String[] args) {
 
-        int max = 10000;    // int 的范围
+        int max = 100;    // int 的范围
         int sum = 0;
         int threadNum = 4;  // cup 核数
 
@@ -58,11 +59,13 @@ public class Sum1 implements Runnable{
             int from = max * i / threadNum + 1;
             int to = max * (i +1) / threadNum;
             subSum[i] = new Sum.ReSum(0);
+            // 这里需要使用去线程池获取线程
             Thread thread = new Thread(new Sum1(subSum[i], from, to, threadNum, countDownLatch));
             thread.start();
         }
         try {
             countDownLatch.await(10, TimeUnit.MILLISECONDS);
+            System.out.println(countDownLatch.getCount());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
