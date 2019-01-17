@@ -14,7 +14,7 @@ public class DemoSocket {
         InputStream inputStream = socket.getInputStream();
         OutputStream outputStream = socket.getOutputStream();
         PrintWriter pw = new PrintWriter(new ObjectOutputStream(outputStream), true);
-        pw.println("hello tomcat");
+        pw.println("fadsfsafds");
 
         StringBuffer requestResult = new StringBuffer();
         byte[] bytes = new byte[1024];
